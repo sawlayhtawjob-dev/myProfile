@@ -36,11 +36,13 @@ header div {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .img_profile {
     width: 200px;
     border-radius: 100%;
     border: 1px solid #f0abb5;
+    margin: 20px 20px 20px 0;
 }
 
 /* main content */
@@ -60,7 +62,6 @@ footer {
 @media (max-width: 768px) {
 
     main {
-        margin-top: 160px;
         padding: 1rem;
     }
 }
