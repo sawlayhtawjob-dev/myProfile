@@ -4,10 +4,20 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
 
 /* Header styles */
 
+header,main {
+  max-width: 1080px;
+}
+header {
+  padding: 40px;
+}
 header h1 {
     text-align: center;
     color: #4a5568;
@@ -15,20 +25,35 @@ header h1 {
     font-size: 2rem;
 }
 
-
-/* Main content */
-main {
-    margin-top: 120px;
-    padding: 2rem;
+header label {
+  border: 1px solid #f0abb5;
+  display: block;
+  padding: 20px;
+  margin-right: 40px;
+  border-radius: 10px;
+}
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.img_profile {
+    width: 200px;
+    border-radius: 100%;
+    border: 1px solid #f0abb5;
 }
 
+/* main content */
+main {
+  padding: 0 40px 40px;
+}
 
 /* Footer */
 footer {
     text-align: center;
     padding: 2rem;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(0, 0, 0, 0.2);
+    color: #333;
+    background: #f0abb5;
 }
 
 /* Responsive design */
