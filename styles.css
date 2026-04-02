@@ -5,18 +5,44 @@
     box-sizing: border-box;
 }
 body {
-  width: 100%;
-  margin: 0 auto;
-  display: block;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    clip-path: polygon(0 0,100% 0,0 100%);
+    background: linear-gradient(45deg,#aeabab);
+    height: 228px;
+    z-index: -1;
+}
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    clip-path: polygon(-60px 0,100% 0,100% 100%);
+    background: linear-gradient(45deg,#f5caae);
+    height: 180px;
+    z-index: -1;
 }
 
 /* Header styles */
 
 header,main {
-  max-width: 1080px;
+    width: 100%;
+    max-width: 1080px;
 }
 header {
-  padding: 40px;
+    padding: 40px;
 }
 header h1 {
     text-align: center;
@@ -26,11 +52,11 @@ header h1 {
 }
 
 header label {
-  border: 1px solid #f0abb5;
-  display: block;
-  padding: 20px;
-  margin-right: 40px;
-  border-radius: 10px;
+    display: block;
+    border: 1.5px solid #f5caae;
+    padding: 20px;
+    margin-right: 40px;
+    background: #fff;
 }
 header div {
     display: flex;
@@ -38,24 +64,47 @@ header div {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 .img_profile {
     width: 200px;
     border-radius: 100%;
-    border: 1px solid #f0abb5;
+    border: 1px solid #f5caae;
     margin: 20px 20px 20px 0;
+}
+h3 {
+    margin-bottom: 10px;
 }
 
 /* main content */
 main {
-  padding: 0 40px 40px;
+    padding: 0 40px 40px;
+}
+section {
+    margin-bottom: 30px;
+}
+ul li {
+    list-style: none;
+    padding-left: 20px;
+    position: relative;
+}
+ul li:before {
+    content: '';
+    position: absolute;
+    background: #333;
+    width: 5px;
+    height: 5px;
+    left: 0;
+    border-radius: 100%;
+    top: 0.5em;
 }
 
 /* Footer */
 footer {
+    width: 100%;
     text-align: center;
     padding: 2rem;
     color: #333;
-    background: #f0abb5;
+    background: #f5caae;
 }
 
 /* Responsive design */
