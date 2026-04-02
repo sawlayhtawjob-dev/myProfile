@@ -71,6 +71,10 @@ header div {
     border: 1px solid #f5caae;
     margin: 20px 20px 20px 0;
 }
+.my_name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 h3 {
     margin-bottom: 10px;
 }
@@ -96,6 +100,14 @@ ul li:before {
     left: 0;
     border-radius: 100%;
     top: 0.5em;
+}
+table tr {
+    margin-top: 10px;
+    display: flex;
+}
+tr td:nth-child(2) {
+    margin: 0 10px 0;
+    display: block;
 }
 
 /* Footer */
