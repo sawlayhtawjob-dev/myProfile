@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Page as PDF</title>
+    
+    <!-- External jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- html2pdf.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .content {
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        button:hover {
+            background: #0056b3;
+        }
+        
+        h1, h2 {
+            color: #333;
+        }
+        
+        .print-only {
+            display: none;
+        }
+        
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls no-print">
+        <button id="downloadPDF">📄 Download as PDF</button>
+        <button id="printPage" onclick="window.print()">🖨️ Print</button>
+    </div>
+    
+    <div class="content">
+        <h1>Sample Document</h1>
+        <p>This is a sample document that can be saved as PDF. The content below will be included in the PDF.</p>
+        
+        <h2>Features:</h2>
+        <ul>
+            <li>✅ Works with external jQuery</li>
+            <li>✅ Preserves CSS styling</li>
+            <li>✅ Responsive design</li>
+            <li>✅ Custom page size and margins</li>
+        </ul>
+        
+        <div style="margin: 20px 0;">
+            <img src="https://via.placeholder.com/400x200/007bff/ffffff?text=Sample+Image" alt="Sample Image" style="max-width: 100%; height: auto;">
+        </div>
+        
+        <table border="1" style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
+                <tr style="background: #f8f9fa;">
+                    <th style="padding: 12px; text-align: left;">Item</th>
+                    <th style="padding: 12px; text-align: left;">Price</th>
+                    <th style="padding: 12px; text-align: left;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 12px;">Product A</td>
+                    <td style="padding: 12px;">$29.99</td>
+                    <td style="padding: 12px;">✅ In Stock</td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px;">Product B</td>
+                    <td style="padding: 12px;">$49.99</td>
+                    <td style="padding: 12px;">⚠️ Low Stock</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="print-only" style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee;">
+            <p><strong>Generated on: <span id="printDate"></span></strong></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Set current date for print footer
+            $('#printDate').text(new Date().toLocaleDateString());
+            
+            // PDF Download function
+            $('#downloadPDF').click(function() {
+                const element = $('.content')[0];
+                
+                const opt = {
+                    margin: 0.5,
+                    filename: 'document-' + new Date().toISOString().slice(0,10) + '.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { 
+                        scale: 2,
+                        useCORS: true,
+                        letterRendering: true
+                    },
+                    jsPDF: { 
+                        unit: 'in', 
+                        format: 'a4', 
+                        orientation: 'portrait' 
+                    }
+                };
+                
+                html2pdf().set(opt).from(element).save();
+            });
+        });
+    </script>
+</body>
+</html>
